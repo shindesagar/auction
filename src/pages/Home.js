@@ -1,13 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
+import { baseURL } from '../constants/alpha-env.constant';
+import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import ProductCard  from '../components/ProductCard'
 export default function Home() {
+  const [getProducts,setProducts] = useState([])
+  useEffect(() => {
+    async function fetchProductList() {
+      try {
+        const{data:res} = await axios.get(`${baseURL}/product-ms/getProductList`);
+         setProducts(res.data)
+      } catch (error) {
+        console.error("Error fetching car list:", error);
+      }
+    }
 
+    fetchProductList();
+  }, []);
   return (
     <main>
         
@@ -70,21 +84,16 @@ export default function Home() {
               modules={[Pagination]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>  
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
+              {
+                getProducts.length > 0 && (
+                  getProducts.map((image, index) => (
+                    <SwiperSlide>
+                      <ProductCard getImage={image}/>
+                    </SwiperSlide>
+                  ))
+                )
+              }
+              
             </Swiper>
             
             </div>

@@ -8,3 +8,6 @@
 a{
     text-decoration: none;
 }
+.border-primary{
+    border:1px dashed #489f48 !important;
+}
