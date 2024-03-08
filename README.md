@@ -33,7 +33,7 @@ Follow these steps to set up the E-Auction Platform locally:
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/exampleuser/e-auction-frontend.git](https://github.com/shindesagar/auction
+    git clone https://github.com/shindesagar/auction
     cd e-auction-frontend
     ```
 
