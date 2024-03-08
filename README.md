@@ -20,8 +20,7 @@ Welcome to the E-Auction Platform repository! This repository contains the front
 
 ## Technologies Used
 
-- **React**: The frontend is built using React, providing a robust and responsive user interface.
-- **Redux**: Redux is utilized for efficient state management, ensuring a consistent application state across components.
+- **React**: The frontend is built using React, providing a robust and responsive user interface
 - **Authentication**: User authentication is implemented using industry-standard protocols to safeguard user accounts and data.
 - **Form Handling**: Formik is used for handling forms, streamlining the process of creating and submitting auction listings.
 - **Real-Time Updates**: WebSocket technology is employed to deliver real-time updates on auction statuses, ensuring a dynamic and interactive bidding experience.
