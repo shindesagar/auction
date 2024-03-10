@@ -41,7 +41,8 @@ export default function Home() {
                 disableOnInteraction: false,
               }}
               modules={[Autoplay]}
-              className="mySwiper"
+              className="mySwiper "
+              style={{paddingBottom:"30px"}}
             >
               <SwiperSlide>
                 <img src={require('../assets/img-banner-3.jpg')} alt="" style={{height:'400px'}}/>
@@ -59,7 +60,9 @@ export default function Home() {
 
         <div className="album py-5">
           <div className="container">
-            <h3 className="fw-light fw-bold mb-4">Featured Items</h3>
+            <h3 className="fw-light fw-bold mb-4">Live Auction<br/>
+              {/* <span className='fw-light fs-6'>Closing Within 24 Hours</span> */}
+            </h3>
             <div className="row  g-3">
             <Swiper
               slidesPerView={4}
@@ -87,7 +90,7 @@ export default function Home() {
               {
                 getProducts.length > 0 && (
                   getProducts.map((image, index) => (
-                    <SwiperSlide>
+                    <SwiperSlide  key={index} >
                       <ProductCard getImage={image}/>
                     </SwiperSlide>
                   ))
@@ -100,24 +103,24 @@ export default function Home() {
           </div>
         </div>
         <section className='container'>
-          <div class="row mb-2">
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex align-items-center">
-                  <h3 class="mb-0 fs-1 fw-bold">Houses & <br/>Apartments</h3>
+          <div className="row mb-2">
+            <div className="col-md-6">
+              <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="col p-4 d-flex align-items-center">
+                  <h3 className="mb-0 fs-1 fw-bold">Houses & <br/>Apartments</h3>
                 </div>
-                <div class="col-auto d-none d-lg-block">
+                <div className="col-auto d-none d-lg-block">
                 <img src={require('../assets/img-banner-home.png')} alt="" style={{height:'195px'}}/>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex align-items-center">
-                  <h3 class="mb-0 fs-1 fw-bold">Buy & <br/>Sell Used Cars</h3>
+            <div className="col-md-6">
+              <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="col p-4 d-flex align-items-center">
+                  <h3 className="mb-0 fs-1 fw-bold">Buy & <br/>Sell Used Cars</h3>
                   
                 </div>
-                <div class="col-auto d-none d-lg-block">
+                <div className="col-auto d-none d-lg-block">
                   
                 <img src={require('../assets/img-banner-car.png')} alt="" style={{height:'195px'}}/>
                 </div>
@@ -127,8 +130,8 @@ export default function Home() {
         </section>
         <div className="album py-5">
           <div className="container">
-            <h3 className="fw-bold mb-4">Popular Auctions<br/>
-              <span className='fw-light fs-6'>Closing Within 24 Hours</span>
+            <h3 className="fw-bold mb-4">Upcoming Auctions
+              
             </h3>
             <div className="row  g-3">
             <Swiper
@@ -175,78 +178,32 @@ export default function Home() {
           </div>
         </div>
         <section className='container'>
-          <div class="row mb-2">
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex align-items-center">
-                  <h3 class="mb-0 fs-1 fw-bold">Watches</h3>
+          <div className="row mb-2">
+            <div className="col-md-6">
+              <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="col p-4 d-flex align-items-center">
+                  <h3 className="mb-0 fs-1 fw-bold">Watches</h3>
                 </div>
-                <div class="col-auto d-none d-lg-block">
-                <img src={require('../assets/img-banner-home.png')} alt="" style={{height:'195px'}}/>
+                <div className="col-auto d-none d-lg-block">
+                <img src={require('../assets/watches.png')} alt="" style={{height:'195px'}}/>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex align-items-center">
-                  <h3 class="mb-0 fs-1 fw-bold">Jewelry</h3>
+            <div className="col-md-6">
+              <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="col p-4 d-flex align-items-center">
+                  <h3 className="mb-0 fs-1 fw-bold">Jewelry</h3>
                   
                 </div>
-                <div class="col-auto d-none d-lg-block">
+                <div className="col-auto d-none d-lg-block">
                   
-                <img src={require('../assets/img-banner-car.png')} alt="" style={{height:'195px'}}/>
+                <img src={require('../assets/img-jwelery.png')} alt="" style={{height:'195px'}}/>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <div className="album py-5">
-          <div className="container">
-            <h3 className="fw-light fw-bold mb-4">Upcoming Auctions </h3>
-            <div className="row  g-3">
-            <Swiper
-              slidesPerView={4}
-              spaceBetween={10}
-              pagination={{
-                clickable: true,
-              }}
-              breakpoints={{
-                '@0.00': {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-                '@0.75': {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                '@1.00': {
-                  slidesPerView: 4,
-                  spaceBetween: 40,
-                }
-              }}
-              modules={[Pagination]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>  
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard/>
-              </SwiperSlide>
-            </Swiper>
-            
-            </div>
-          </div>
-        </div>
+        
     </main>
   )
 }

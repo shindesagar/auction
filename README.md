@@ -1,66 +1,70 @@
-# E-Auction Platform
+# Getting Started with Create React App
 
-Welcome to the E-Auction Platform repository! This repository contains the frontend code for an E-Auction application that facilitates online auctions for various goods and services. Whether you're a buyer looking for unique items or a seller wanting to reach a broader audience, this platform provides a seamless and secure auction experience.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Features
+## Available Scripts
 
-1. **User Authentication**: Securely sign up and log in to your account to participate in auctions and manage your listings. User authentication is implemented using industry-standard practices to ensure the safety of your personal data.
+In the project directory, you can run:
 
-2. **Auction Listings**: Easily browse through a wide range of auction listings, each detailing the item or service on offer, starting bid, auction end time, and other relevant information. 
+### `npm start`
 
-3. **Bidding System**: Participate in auctions by placing bids on items or services you're interested in. Receive real-time updates on the status of your bids and notifications when you've been outbid.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-4. **Seller Dashboard**: Sellers can manage their listings, including creating new auctions, setting starting bids, monitoring bids, and closing auctions once they've reached their desired price.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-5. **Buyer Dashboard**: Buyers can track their bidding activity, view auctions they're participating in, and manage their won items or services.
+### `npm test`
 
-6. **Payment Integration**: Seamless integration with payment gateways allows for secure transactions, ensuring both buyers and sellers are protected throughout the process.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-7. **Search and Filters**: Easily search for specific items or services and apply filters to narrow down listings based on category, price range, or other criteria.
+### `npm run build`
 
-## Technologies Used
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- **React**: The frontend is built using React, providing a robust and responsive user interface
-- **Authentication**: User authentication is implemented using industry-standard protocols to safeguard user accounts and data.
-- **Form Handling**: Formik is used for handling forms, streamlining the process of creating and submitting auction listings.
-- **Real-Time Updates**: WebSocket technology is employed to deliver real-time updates on auction statuses, ensuring a dynamic and interactive bidding experience.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Getting Started
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Follow these steps to set up the E-Auction Platform locally:
+### `npm run eject`
 
-1. **Clone the repository**:
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-    ```bash
-    git clone https://github.com/shindesagar/auction
-    cd e-auction-frontend
-    ```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-2. **Install dependencies**:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-    ```bash
-    npm install
-    ```
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-3. **Configure API endpoint**: In the `src/apiConfig.js` file, update the `BASE_URL` with the URL of your E-Auction Backend API.
+## Learn More
 
-4. **Run the application**:
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-    ```bash
-    npm start
-    ```
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-5. **Access the application**: Open your web browser and go to http://localhost:3000 to start using the E-Auction Platform.
+### Code Splitting
 
-## Test Credentials
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-To explore the platform, you can use the following test credentials:
+### Analyzing the Bundle Size
 
-- **Email**: sagar1@example.com
-- **Password**: sagar54
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-Feel free to sign in using these credentials to experience the platform's functionalities without creating a new account.
+### Making a Progressive Web App
 
-We hope you find the E-Auction Platform useful for conducting and participating in online auctions effectively. If you have any questions, issues, or suggestions, please don't hesitate to open an issue or contact us.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-Happy bidding!
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

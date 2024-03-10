@@ -1,13 +1,32 @@
 .primary-color{
     color:#489f48
 }
-.btn{
+.btn,.btn.disabled{
     background:#489f48 ;
     border-color: #489f48 ;
 }
+
 a{
     text-decoration: none;
 }
 .border-primary{
     border:1px dashed #489f48 !important;
+}
+.countdown-item {
+ margin-right: 10px;
+}
+.countdown-value {
+    border-radius: 10px;
+    padding: 2px 9px;
+    box-shadow: 0px 9px 20px 0px rgba(22, 26, 57, 0.36);
+ }
+.swiper{
+    padding-bottom: 40px !important;
+}
+.userBidList li:first-child {background: rgb(241, 254, 241);color:#489f48}
+.userBidList li:nth-child(2) {background: rgb(255, 242, 179);color:#987104}
+.userBidList li {background: rgb(253, 219, 219);color:#85062c}
+
+.form-signin{
+    max-width: 400px;
 }

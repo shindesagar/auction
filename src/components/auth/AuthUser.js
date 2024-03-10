@@ -18,7 +18,6 @@ export default function AuthUser(){
 
     const saveToken = (user,token) =>{
         localStorage.setItem('x-access-token', JSON.stringify(token));
-
         setToken(token);
         navigate('/'); 
     }

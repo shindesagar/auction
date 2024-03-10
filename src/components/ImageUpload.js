@@ -38,12 +38,13 @@ export default function ImageUpload(props) {
     tempImages.splice(index,1);
     props.setImageRender(tempImages);
   }
+  
   return (
     <>
       <div className='border-primary position-relative' style={{minHeight:"157px"}}>
         {
             props.imageRender.length > 0 ? (
-              <ul className='d-flex p-0 flex-wrap' style={{listStyleType:"none"}}>
+              <ul className='d-flex p-0 flex-wrap position-relative' style={{listStyleType:"none", zIndex:"1"}}>
                 {props.imageRender.map((image, index) => (
                   <li key={index} className='m-3 position-relative text-break' style={{width: '150px'}}>
                     <span 
@@ -55,32 +56,44 @@ export default function ImageUpload(props) {
                       style={{width:"25px",height:"25px",right:"-8px",fontSize:"14px",top:"-13px",cursor:"pointer"}}
                       onClick={handleRemoveImage}
                     >X</span>
-                    <img src={`${baseURL}/images/${image?.data?.filename}`} alt={`Image ${index}`}  style={{ width: '150px', height: '150px', objectFit: 'cover' }} className='img-thumbnail'/>
+                   <img
+                    src={`${baseURL}/images/${image?.data?.filename}`}
+                    alt={`Product thumbnail ${index}`} 
+                    style={{ width: '150px', height: '150px', objectFit: 'cover', borderStyle: 'dashed' }}
+                    className='img-thumbnail'
+                  />
                     <span className='text-gray-500 float-left w-100' style={{fontSize:"12px", textOverflow:"ellipsis"}}>
                       {image?.data?.filename}
                     </span>
                   </li>
                 ))}
-                <li  className='m-3'>
-                  <div 
-                    className='text-center primary-color border-primary rounded d-flex flex-wrap justify-content-center align-items-center' style={{width:"150px",height:"150px",cursor:"pointer"}}
-                    onClick={handleAddImageClick}
-                  >
-                    <span className='d-flex flex-wrap'>
-                      <span className='fs-1 fw-bold w-100 float-left'>&#43;</span>
-                      <span className='fs-6 w-100 float-left'>Add Images</span>
-                    </span>
-                </div>
+                {
+                  props.multipleImage &&
+                    <li  className='m-3'>
+                      <div 
+                        className='text-center primary-color border-primary rounded d-flex flex-wrap justify-content-center align-items-center' style={{width:"150px",height:"150px",cursor:"pointer"}}
+                        onClick={handleAddImageClick}
+                      >
+                        <span className='d-flex flex-wrap'>
+                          <span className='fs-1 fw-bold w-100 float-left'>&#43;</span>
+                          <span className='fs-6 w-100 float-left'>Add Images</span>
+                        </span>
+                      </div>
 
-                </li>
+                    </li>
+                }
               </ul>
             ) : (
-              <label className='text-center primary-color position-absolute m-auto' style={{width:"160px",height:"80px",left:"0",right:"0",top:"0",bottom:"0"}}>
-                  Drag & Drop Here<br/>
-                  Or<br/>
-                  Browse<br/>
-              </label>
+              <>
+                <label className='text-center primary-color position-absolute m-auto' style={{width:"160px",height:"80px",left:"0",right:"0",top:"0",bottom:"0"}}>
+                    Drag & Drop Here<br/>
+                    Or<br/>
+                    Browse<br/>
+                </label>
+                
+              </>
             )
+            
         }
         
         <input 
@@ -89,7 +102,7 @@ export default function ImageUpload(props) {
           id="file_upload"
           accept=".png, .jpg, .jpeg"
           multiple
-          style={{opacity:"0"}}
+          style={{opacity:"0",top:"0"}}
           onChange={handleImageAdded}
         />
     </div>

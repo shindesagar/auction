@@ -3,6 +3,7 @@ import ImageUpload from '../components/ImageUpload';
 import axios from 'axios';
 import { baseURL } from '../constants/alpha-env.constant';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export default function ProductForm() {
   
   const navigate = useNavigate();
@@ -12,15 +13,23 @@ export default function ProductForm() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === 'title') {
-        slugValue.current = value;
+      slugValue.current = value;
     }
-    setProductData((prev) => ({ ...prev, [name]: value, slug: generateSlug(slugValue.current) }));
+    if (name === 'auctionDuration') {
+      const parsedDate = new Date(value);
+      setProductData((prev) => ({ ...prev, [name]: value, auctionDuration: convertToIsoString(parsedDate), slug: generateSlug(slugValue.current) }));
+    } else {
+      setProductData((prev) => ({ ...prev, [name]: value, slug: generateSlug(slugValue.current)}));
+    }
   };
 
   const generateSlug = (title) => {
-    return title.toLowerCase().replace(/[^a-z0-9\s(){}\[\]]/g, '-').replace(/\s+/g, '-');
+    return title.toLowerCase().replace(/[^a-z0-9\s(){}[\]]/g, '-').replace(/\s+/g, '-');
   };
-
+  const convertToIsoString = (date) => {
+    let datetime = new Date(date);
+    return datetime.toISOString();
+  };
   const createProduct = async () => {
     try {
       const imagesToSend = images
@@ -28,13 +37,23 @@ export default function ProductForm() {
         .map(res => res.data.filename);
 
       const requestData = { ...getProductData, images: imagesToSend };
-      const { data } = await axios.post(`${baseURL}/product-ms/add`, requestData, {
+      console.log(requestData);
+      await axios.post(`${baseURL}/product-ms/add`, requestData, {
         headers: {
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Authorization": JSON.parse(localStorage.getItem('x-access-token'))
         }
       });
+      toast.success('Added product successfully!');
+      setTimeout(() => {
+        navigate('/'); 
+      }, 1000);
+     
     } catch (error) {
-      console.error('Error registering user:', error);
+      toast.error('Failed to add product:', error);
+      setTimeout(() => {
+        navigate('/'); 
+      }, 1000);
       if(error.response && error.response.status === 401){
         navigate('/login'); 
       }
@@ -44,18 +63,18 @@ export default function ProductForm() {
     <main className="form-signin ">
         <div className='container'>
             <div className="form-floating mb-3 text-center fw-bold fs-1">Add Product</div>
-            <div class="mb-3">
-                <label  class="form-label">Title</label>
-                <input type="text" class="form-control" value={getProductData.title}  name="title" onChange={handleChange}/>
+            <div className="mb-3">
+                <label  className="form-label">Title</label>
+                <input type="text" className="form-control" value={getProductData.title}  name="title" onChange={handleChange}/>
             </div>
             <div className="mb-3 mt-">
                 <label className="form-label" style={{marginRight:"20px"}}>Slug:</label>
                 <span className='primary-color'>{getProductData.slug}</span>
                 
                 </div>
-            <div  class="mb-3">
-                <label  class="form-label">Category</label>
-                <select class="form-select" aria-label="Category" name="category" onChange={handleChange}>
+            <div  className="mb-3">
+                <label  className="form-label">Category</label>
+                <select className="form-select" aria-label="Category" name="category" onChange={handleChange}>
                     <option selected></option>
                     <option value="car">Car</option>
                     <option value="House">House</option>
@@ -63,33 +82,33 @@ export default function ProductForm() {
                     <option value="watches">Watches</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label  class="form-label">Description</label>
-                <textarea class="form-control" rows="3"  name="description" onChange={handleChange}></textarea>
+            <div className="mb-3">
+                <label  className="form-label">Description</label>
+                <textarea className="form-control" rows="3"  name="description" onChange={handleChange}></textarea>
             </div>
             <div className='row'>
                 <div className='col-md-6'>
-                    <div class="mb-3">
-                        <label  class="form-label">Starting Bid</label>
-                        <input type="number" class="form-control"  name="startingBid" onChange={handleChange}/>
+                    <div className="mb-3">
+                        <label  className="form-label">Starting Bid</label>
+                        <input type="number" className="form-control"  name="startingBid" onChange={handleChange}/>
                     </div>
                 </div>
                 <div className='col-md-6'>
-                    <div class="mb-3">
-                        <label  class="form-label">Auction Duration</label>
-                        <input type="number" class="form-control"  name="auctionDuration" onChange={handleChange}/>
+                    <div className="mb-3">
+                        <label  className="form-label">Auction Duration</label>
+                        <input type="datetime-local" className="form-control"  name="auctionDuration" onChange={handleChange}/>
                     </div>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="formFileSm" class="form-label">Images</label>
+            <div className="mb-3">
+                <label htmlFor="formFileSm" className="form-label">Images</label>
                 <div className='col-md-12'>
                     <ImageUpload multipleImage={true} imageRender={images} setImageRender={setImages}/>
                 </div>
                 
             </div>
-            <div>
-                <button className="w-100 btn btn-lg btn-dark" type="submit" onClick={() =>  createProduct()}>
+            <div className='text-end'>
+                <button className=" btn btn-lg btn-dark" type="submit" onClick={() =>  createProduct()}>
                     Submit
                 </button>
             </div>
